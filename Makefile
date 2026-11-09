@@ -5,6 +5,7 @@ IMAGE := texlive/texlive:latest
 MAIN := main.tex
 BUILD_DIR := build
 OUTPUT_DIR := dist
+OUTPUT_NAME := Лабораторная работа №5 Солдаткин Н.С. ИУ5-11М.pdf
 
 DOCKER_WORKDIR := /workspace
 
@@ -26,7 +27,7 @@ build:
 		-halt-on-error \
 		-outdir=$(BUILD_DIR) \
 		$(MAIN)
-	cp "$(BUILD_DIR)/$(basename $(notdir $(MAIN))).pdf" "$(OUTPUT_DIR)/"
+	cp "$(BUILD_DIR)/$(basename $(notdir $(MAIN))).pdf" "$(OUTPUT_DIR)/$(OUTPUT_NAME)"
 
 clean:
 	$(DOCKER_RUN) \

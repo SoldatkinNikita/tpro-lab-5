@@ -68,6 +68,37 @@
 	}%
 }
 
+% Все страницы отчёта сохраняют вертикальный формат A4.
+\newenvironment{reportSheet}{%
+	\clearpage
+}{%
+	\clearpage
+}
+
+\newcommand{\analysisDiagram}[4][0.78]{%
+	\begin{figure}[H]
+		\centering
+		\adjustbox{max width=\textwidth,max height=#1\textheight}{%
+			\includegraphics{figures/analysis/#2.pdf}}
+		\caption{#3}\label{#4}
+	\end{figure}
+}
+
+% Повёрнутая схема с подписью занимает отдельную вертикальную страницу A4.
+\newlength{\reportDiagramHeight}
+\newcommand{\rotatedAnalysisDiagram}[3]{%
+	\clearpage
+	\setlength{\reportDiagramHeight}{%
+		\dimexpr\textheight-3\baselineskip\relax}
+	\begin{figure}[p]
+		\centering
+		\adjustbox{max width=\textwidth,max height=\reportDiagramHeight}{%
+			\rotatebox{90}{\includegraphics{figures/analysis/#1.pdf}}}
+		\caption{#2}\label{#3}
+	\end{figure}
+	\clearpage
+}
+
 % Раздел: 2 Название раздела
 \titleformat{\section}[hang]
 {\normalfont\bfseries\fontsize{14pt}{21pt}\selectfont}
