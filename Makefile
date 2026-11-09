@@ -5,7 +5,8 @@ IMAGE := texlive/texlive:latest
 MAIN := main.tex
 BUILD_DIR := build
 OUTPUT_DIR := dist
-OUTPUT_NAME := Лабораторная работа №5 Солдаткин Н.С. ИУ5-11М.pdf
+# UTF-8 filename encoded as hex so Windows make/shell never receives Cyrillic.
+OUTPUT_NAME_UTF8_HEX := D09BD0B0D0B1D0BED180D0B0D182D0BED180D0BDD0B0D18F20D180D0B0D0B1D0BED182D0B020E284963520D0A1D0BED0BBD0B4D0B0D182D0BAD0B8D0BD20D09D2ED0A12E20D098D0A3352D3131D09C2E706466
 
 DOCKER_WORKDIR := /workspace
 
@@ -27,7 +28,7 @@ build:
 		-halt-on-error \
 		-outdir=$(BUILD_DIR) \
 		$(MAIN)
-	cp "$(BUILD_DIR)/$(basename $(notdir $(MAIN))).pdf" "$(OUTPUT_DIR)/$(OUTPUT_NAME)"
+	$(DOCKER_RUN) python3 -c 'from pathlib import Path; import shutil; shutil.copy2("build/main.pdf", Path("dist") / bytes.fromhex("$(OUTPUT_NAME_UTF8_HEX)").decode("utf-8"))'
 
 clean:
 	$(DOCKER_RUN) \
