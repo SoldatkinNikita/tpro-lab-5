@@ -79,24 +79,29 @@
 	\begin{figure}[H]
 		\centering
 		\adjustbox{max width=\textwidth,max height=#1\textheight}{%
-			\includegraphics{figures/analysis/#2.pdf}}
+\includegraphics{build/staruml/#2.pdf}}
 		\caption{#3}\label{#4}
 	\end{figure}
 }
 
-% Повёрнутая схема с подписью занимает отдельную вертикальную страницу A4.
+% Полноформатная схема с подписью занимает отдельную вертикальную страницу A4.
 \newlength{\reportDiagramHeight}
-\newcommand{\rotatedAnalysisDiagram}[3]{%
+\newcommand{\fullPageAnalysisDiagram}[4][0]{%
 	\clearpage
 	\setlength{\reportDiagramHeight}{%
 		\dimexpr\textheight-3\baselineskip\relax}
 	\begin{figure}[p]
 		\centering
 		\adjustbox{max width=\textwidth,max height=\reportDiagramHeight}{%
-			\rotatebox{90}{\includegraphics{figures/analysis/#1.pdf}}}
-		\caption{#2}\label{#3}
+			\rotatebox{#1}{\includegraphics{build/staruml/#2.pdf}}}
+		\caption{#3}\label{#4}
 	\end{figure}
 	\clearpage
+}
+
+% Поворачивается только изображение; сам лист остаётся вертикальным.
+\newcommand{\rotatedAnalysisDiagram}[3]{%
+	\fullPageAnalysisDiagram[90]{#1}{#2}{#3}%
 }
 
 % Раздел: 2 Название раздела

@@ -20,6 +20,7 @@ DOCKER_RUN := MSYS_NO_PATHCONV=1 docker run --rm \
 
 build:
 	mkdir -p "$(BUILD_DIR)" "$(OUTPUT_DIR)"
+	node scripts/render-staruml.mjs
 	$(DOCKER_RUN) \
 		latexmk \
 		-lualatex \

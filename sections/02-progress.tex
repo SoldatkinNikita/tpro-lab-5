@@ -8,7 +8,7 @@
 заданиями, результатами и параметрами моделей. Catalog Service инициирует
 обработку и получает её статус, Auth Service обеспечивает аутентификацию.
 
-\rotatedAnalysisDiagram{clarified-use-cases}{Диаграмма прецедентов}{fig:use-cases}
+\analysisDiagram[0.72]{05}{Диаграмма прецедентов}{fig:use-cases}
 \end{reportSheet}
 
 \begin{reportSheet}
@@ -19,7 +19,7 @@
 к реализуемому прецеденту. Детально рассмотрены анализ аудиозаписи,
 поиск аудиозаписи и настройка параметров анализа.
 
-\analysisDiagram[0.68]{traces}{Трассировка прецедентов в кооперации}{fig:traces}
+\rotatedAnalysisDiagram{06}{Трассировка прецедентов в кооперации}{fig:traces}
 \end{reportSheet}
 
 \subsection{Обзорные диаграммы классов анализа}
@@ -30,21 +30,20 @@
 ему принадлежат оценки уверенности. Модель связана с профилем весов
 и текущими порогами.
 
-\analysisDiagram[0.68]{entity-classes-overview}{Обзорная диаграмма классов сущностей}{fig:entities}
+\analysisDiagram[0.68]{09}{Обзорная диаграмма классов сущностей}{fig:entities}
 \clearpage
 
 Граничные классы представлены восемью формами интерфейса и тремя
 интерфейсами внешних систем (рисунок~\ref{fig:boundaries}). Они принимают
 действия акторов и передают запросы управляющим классам.
 
-\analysisDiagram[0.30]{boundary-classes-overview}{Обзорная диаграмма граничных классов}{fig:boundaries}
-
 Семь управляющих классов координируют вход, поиск, анализ, повторную
 обработку каталога, работу с заданиями, результатами и параметрами
 (рисунок~\ref{fig:controls}). Связанные операции нескольких прецедентов
 сосредоточены в общих управляющих классах.
 
-\analysisDiagram[0.30]{control-classes-overview}{Обзорная диаграмма управляющих классов}{fig:controls}
+\rotatedAnalysisDiagram{07}{Обзорная диаграмма граничных классов}{fig:boundaries}
+\rotatedAnalysisDiagram{08}{Обзорная диаграмма управляющих классов}{fig:controls}
 \clearpage
 
 \subsection{Диаграммы классов-участников коопераций}
@@ -55,7 +54,7 @@
 Контроллер анализа получает файл и определяет характеристики,
 контроллер задания создаёт задание и сохраняет результат.
 
-\analysisDiagram[0.74]{analyze-audio-participants}{Классы-участники кооперации анализа аудиозаписи}{fig:analysis-participants}
+\rotatedAnalysisDiagram{12}{Классы-участники кооперации анализа аудиозаписи}{fig:analysis-participants}
 \clearpage
 
 В кооперации «Выполнить поиск аудиозаписи» участвуют форма поиска,
@@ -63,7 +62,7 @@
 (рисунок~\ref{fig:search-participants}). Форма содержит описание,
 фильтры и результаты, управляющий класс формирует условия поиска.
 
-\analysisDiagram[0.68]{search-audio-participants}{Классы-участники кооперации поиска аудиозаписи}{fig:search-participants}
+\rotatedAnalysisDiagram{11}{Классы-участники кооперации поиска аудиозаписи}{fig:search-participants}
 \clearpage
 
 В кооперации «Настроить параметры анализа» форма передаёт выбор модели,
@@ -71,7 +70,7 @@
 к модели, профилю весов и порогам уверенности
 (рисунок~\ref{fig:parameters-participants}).
 
-\analysisDiagram[0.76]{configure-analysis-participants}{Классы-участники кооперации настройки параметров анализа}{fig:parameters-participants}
+\analysisDiagram[0.65]{13}{Классы-участники кооперации настройки параметров анализа}{fig:parameters-participants}
 
 \begin{reportSheet}
 \subsection{Диаграммы последовательностей}
@@ -93,9 +92,9 @@
 и обновление порогов. Сохранённые параметры применяются при последующих
 запусках анализа.
 
-\rotatedAnalysisDiagram{analyze-audio-sequence}{Последовательность анализа аудиозаписи}{fig:analysis-sequence}
-\rotatedAnalysisDiagram{search-audio-sequence}{Последовательность поиска аудиозаписи}{fig:search-sequence}
-\rotatedAnalysisDiagram{configure-analysis-sequence}{Последовательность настройки параметров анализа}{fig:parameters-sequence}
+\rotatedAnalysisDiagram{15}{Последовательность анализа аудиозаписи}{fig:analysis-sequence}
+\fullPageAnalysisDiagram{14}{Последовательность поиска аудиозаписи}{fig:search-sequence}
+\fullPageAnalysisDiagram{16}{Последовательность настройки параметров анализа}{fig:parameters-sequence}
 \end{reportSheet}
 
 \begin{reportSheet}
@@ -107,7 +106,7 @@
 Обзорная диаграмма объединяет 29 классов: 11 граничных, 7 управляющих
 и 11 сущностей (рисунок~\ref{fig:all-classes}).
 
-\rotatedAnalysisDiagram{classes-general}{Обзорная диаграмма всех классов анализа}{fig:all-classes}
+\rotatedAnalysisDiagram{10}{Обзорная диаграмма всех классов анализа}{fig:all-classes}
 \end{reportSheet}
 
 \begin{reportSheet}
@@ -124,6 +123,6 @@
 Catalog Service обращается к анализу и заданиям. Зависимости направлены
 от специализированного прикладного уровня к общим и базовым пакетам.
 
-\rotatedAnalysisDiagram{class-packages}{Распределение классов анализа по пакетам}{fig:class-packages}
-\rotatedAnalysisDiagram{package-dependencies}{Зависимости пакетов анализа}{fig:package-dependencies}
+\rotatedAnalysisDiagram{19}{Распределение классов анализа по пакетам}{fig:class-packages}
+\rotatedAnalysisDiagram{20}{Зависимости пакетов анализа}{fig:package-dependencies}
 \end{reportSheet}
